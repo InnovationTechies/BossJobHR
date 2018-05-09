@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BossJob.Models.Job>
+
+
+@{
+    ViewBag.Title = "Home Page";
+    var alert = "";
+    if (ViewBag.Message == "Sorry Something went wrong")
+    {
+        alert= "alert alert-warning";
+    }
+    else{
+        alert = "alert alert-success";
+    }
+}
+
+<br /><br />
+      
+      <div class="container">
+
+          @if (ViewBag.Message != null )
+          {
+              <div class="@alert">
+                  <strong>@ViewBag.Message</strong>
+              </div>
+          }
+      <h3>List of Jobs</h3>
+
+      @foreach (var item in Model)
+{
+
+
+
+
+      <div class="card" style="width: 100%;">
+          <div class="card-body">
+              @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+              {
+              <h5 class="card-title">@item.JobName</h5>
+              <h6 class="card-subtitle mb-2 text-muted">@item.JobExpire</h6>
+              <p class="card-text">@item.JobDesc</p>
+              <input id="file" name="file" type="file" class="card-link" />
+              <input type="submit" class="card-link" value="apply" />
+              <input type="hidden" name="id" id="id" value="@item.JobId" />
+
+              }
+              <div class="card-footer">
+                  <div class="form-horizontal">
+                      <div class="row">
+                          <div class="col-sm-12 text-left">
+                              @using (Html.BeginForm("DeleteJob", "Home", FormMethod.Post))
+                                 {
+                                    <input type="submit" class="btn btn-primary" value="Delete" />
+                                     <input type="hidden" name="id" id="id" value="@item.JobId" />
+                                 }
+
+                              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#@item.JobId" aria-expanded="false" aria-controls="collapseExample">
+                                  Edit
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+
+                  @using (Html.BeginForm("EditJob", "Home", FormMethod.Post))
+                    {
+
+                  <div class="collapse" id="@item.JobId">
+                      <input type="text" name="jobName" value="@item.JobName" />
+                      <input type="date" name="jobDate" value="@item.JobExpire" />
+                      <textarea name="jobDesc">@item.JobDesc</textarea>
+                      <input type="submit" class="card-link" value="Save" />
+                      <input type="hidden" name="id" id="id" value="@item.JobId" />
+                  </div>
+
+                    }
+              </div>
+          </div>
+          <hr /><br/>
+
+      </div>
+
+
+
+
+
+
+}
+
+
+      </div>

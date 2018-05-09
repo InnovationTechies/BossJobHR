@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BossJob", "BossJob\BossJob.csproj", "{67A0D238-754C-4498-9C27-221AB1CE687E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67A0D238-754C-4498-9C27-221AB1CE687E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67A0D238-754C-4498-9C27-221AB1CE687E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67A0D238-754C-4498-9C27-221AB1CE687E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67A0D238-754C-4498-9C27-221AB1CE687E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6BC1895-B144-46D3-A516-FC8E9D5496DD}
+	EndGlobalSection
+EndGlobal
