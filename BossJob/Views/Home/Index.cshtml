@@ -17,16 +17,56 @@
       
       <div class="container">
 
-          @if (ViewBag.Message != null )
-          {
-              <div class="@alert">
-                  <strong>@ViewBag.Message</strong>
-              </div>
-          }
-      <h3>List of Jobs</h3>
+          @if (ViewBag.Message != null)
+    {
+      <div class="@alert">
+          <strong>@ViewBag.Message</strong>
+      </div>
+}
+          <div class="pull-right">
 
-      @foreach (var item in Model)
-{
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Login</button>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="myModal" role="dialog">
+                          <div class="modal-dialog modal-sm">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Sign In</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="form-group">
+                                          @using (Html.BeginForm("DeleteJob", "Home", FormMethod.Post))
+                                    {
+                                      <p>Usernames</p>
+                                      <input id="txtUsername" type="text" class="form-control input-group" />
+                                      <p>Password</p>
+                                      <input id="txtPassword" type="text" class="form-control input-group" />
+                            }
+                                      </div>
+
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                      <button type="button" class="btn btn-primary" data-dismiss="modal">sign In</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+              </div>
+
+          </div>
+
+
+          <h3>List of Jobs</h3>
+
+          @foreach (var item in Model)
+    {
 
 
 
@@ -34,24 +74,24 @@
       <div class="card" style="width: 100%;">
           <div class="card-body">
               @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-              {
-              <h5 class="card-title">@item.JobName</h5>
-              <h6 class="card-subtitle mb-2 text-muted">@item.JobExpire</h6>
-              <p class="card-text">@item.JobDesc</p>
-              <input id="file" name="file" type="file" class="card-link" />
-              <input type="submit" class="card-link" value="apply" />
-              <input type="hidden" name="id" id="id" value="@item.JobId" />
+        {
+          <h5 class="card-title">@item.JobName</h5>
+          <h6 class="card-subtitle mb-2 text-muted">@item.JobExpire</h6>
+          <p class="card-text">@item.JobDesc</p>
+          <input id="file" name="file" type="file" class="card-link" />
+          <input type="submit" class="card-link" value="apply" />
+          <input type="hidden" name="id" id="id" value="@item.JobId" />
 
-              }
+}
               <div class="card-footer">
                   <div class="form-horizontal">
                       <div class="row">
                           <div class="col-sm-12 text-left">
                               @using (Html.BeginForm("DeleteJob", "Home", FormMethod.Post))
-                                 {
-                                    <input type="submit" class="btn btn-primary" value="Delete" />
-                                     <input type="hidden" name="id" id="id" value="@item.JobId" />
-                                 }
+                        {
+                          <input type="submit" class="btn btn-primary" value="Delete" />
+                          <input type="hidden" name="id" id="id" value="@item.JobId" />
+                }
 
                               <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#@item.JobId" aria-expanded="false" aria-controls="collapseExample">
                                   Edit
@@ -61,20 +101,20 @@
                   </div>
 
                   @using (Html.BeginForm("EditJob", "Home", FormMethod.Post))
-                    {
+            {
 
-                  <div class="collapse" id="@item.JobId">
-                      <input type="text" name="jobName" value="@item.JobName" />
-                      <input type="date" name="jobDate" value="@item.JobExpire" />
-                      <textarea name="jobDesc">@item.JobDesc</textarea>
-                      <input type="submit" class="card-link" value="Save" />
-                      <input type="hidden" name="id" id="id" value="@item.JobId" />
-                  </div>
+              <div class="collapse" id="@item.JobId">
+                  <input type="text" name="jobName" value="@item.JobName" />
+                  <input type="date" name="jobDate" value="@item.JobExpire" />
+                  <textarea name="jobDesc">@item.JobDesc</textarea>
+                  <input type="submit" class="card-link" value="Save" />
+                  <input type="hidden" name="id" id="id" value="@item.JobId" />
+              </div>
 
-                    }
+    }
               </div>
           </div>
-          <hr /><br/>
+          <hr /><br />
 
       </div>
 
@@ -85,5 +125,11 @@
 
 }
 
+
+      </div>
+      <div class="container" id="User">
+          
+      </div>
+      <div class="container" id="Admin">
 
       </div>

@@ -78,6 +78,7 @@ namespace BossJob.Controllers
             return RedirectToAction("Index");
         }
 
+        
         [HttpPost]
         public ActionResult EditJob(int id,string jobName, string jobDesc, string jobDate)
         {
@@ -90,5 +91,23 @@ namespace BossJob.Controllers
 
             return RedirectToAction("Index");
         }
+        /// <summary>
+        /// This will allow the user to login
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult SignIn(string username, string password)
+        {
+            Job job;
+            job = db.Jobs.Where(d => d.JobId == id).First();
+            db.Jobs.Remove(job);
+            db.SaveChanges();
+
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
