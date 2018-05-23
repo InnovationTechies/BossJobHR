@@ -100,10 +100,10 @@ namespace BossJob.Controllers
         [HttpPost]
         public ActionResult SignIn(string username, string password)
         {
-            Job job;
-            job = db.Jobs.Where(d => d.JobId == id).First();
-            db.Jobs.Remove(job);
-            db.SaveChanges();
+            //Job job;
+            //job = db.Jobs.Where(d => d.JobId == id).First();
+            //db.Jobs.Remove(job);
+            //db.SaveChanges();
 
 
             return RedirectToAction("Index");
