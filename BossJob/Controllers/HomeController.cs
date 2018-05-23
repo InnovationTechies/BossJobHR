@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BossJob.Models;
 
 namespace BossJob.Controllers
 {
@@ -100,10 +101,10 @@ namespace BossJob.Controllers
         [HttpPost]
         public ActionResult SignIn(string username, string password)
         {
-            //Job job;
-            //job = db.Jobs.Where(d => d.JobId == id).First();
-            //db.Jobs.Remove(job);
-            //db.SaveChanges();
+            Job job;
+            job = db.Jobs.Where(d => d.JobId == id).First();
+            db.Jobs.Remove(job);
+            db.SaveChanges();
 
 
             return RedirectToAction("Index");
